@@ -7,8 +7,10 @@
 </head>
 <body>
     <h1>Upload a Combo </h1>
-    <form action="/combos/new" method="post">
+    <form action="/combos/new" method="post" enctype="multipart/form-data">
         <!-- <label for=""></label> -->
+        <!--  <input type="file" name="avatar" /> -->
+
 
         <label for="starter">Combo Starter: </label>
         <input type="text" name="starter" id="starter">
@@ -21,6 +23,9 @@
 
         <label for="user">User: </label>
         <input type="user" name="user" id="user">
+
+        <input type="file" name="video" />
+
 
         <button type="submit">Upload</button>
     </form>    

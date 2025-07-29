@@ -13,11 +13,16 @@ const comboSchema = new Schema({
     resource:{
         type:String,
         required: true,
-    }, 
-    user:{
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    }
+    },
+    video:{
+        type:String,
+        requried: true,
+    },
+    
+    // user:{
+    //     type: Schema.Types.ObjectId,
+    //     ref: "User"
+    // }
 })
 
 const Combo = model("Combo",comboSchema)
