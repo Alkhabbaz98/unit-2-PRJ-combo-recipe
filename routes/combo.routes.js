@@ -10,6 +10,9 @@ cloudinary.config({
     api_secret: process.env.APISECRET // Click 'View API Keys' above to copy your API secret
 });
 
+
+
+// Create: 
 router.get("/new", (req,res)=>{
     res.render("combo.ejs")
 })
@@ -30,6 +33,39 @@ router.post("/new", upload.single('video') , async(req,res)=> {
   // req.file is the `avatar` file
   // req.body will hold the text fields, if there were any
 // })
+
+
+
+// Show all list and in the list there should be a delete button:
+router.get("/", async (req,res) => {
+    try{
+        const allCombos = await Combo.find()
+        res.render("all-combos.ejs", {allCombos: allCombos})
+    }
+    catch(error){
+        console.log(error)
+    }
+})
+
+
+
+
+
+
+
+
+// Delete: 
+router.delete("/:comboId" , async (req,res)=>{
+    try{
+        const delectedCombo = await Combo.findByIdAndDelete(req.params.comboId)
+        console.log(req.params.comboId)
+        res.redirect("/combos")
+    }
+    catch(error){
+        console.log(error)
+    }
+})
+
 
 
 
