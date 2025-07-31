@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Combo</title>
+</head>
+<body>
+        <h1>Edit you Combo </h1>
+    <form action="/combos/<%= foundCombo._id %>?_method=PUT" method="post" enctype="multipart/form-data">
+        <label for="file"> Choose a video: </label>
+        <input type="file" name="file" id="file">
+<!--  -->
+
+        <label for="starter">Combo Starter: </label>
+        <input value="<%= foundCombo.starter %>" type="text" name="starter" id="starter">
+
+        <label for="description">Combo Description: </label>
+        <input value="<%= foundCombo.description %>" name="description" id="description" type="text">
+
+        <label for="resource">Resource: </label>
+        <input value="<%= foundCombo.resource %>" type="text" name="resource" id="resource">
+
+        <label for="user">User: </label>
+        <input value="<%= foundCombo.user %>" type="text" name="user" id="user">
+        
+        <!-- <label for="video">Video: </label>
+        <input value="<%= foundCombo.video %>" type="file" name="video" />
+ -->
+
+        <button type="submit">submit</button>
+    </form>    
+</body>
+</html>

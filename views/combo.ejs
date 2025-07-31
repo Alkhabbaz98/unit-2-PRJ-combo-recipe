@@ -7,9 +7,16 @@
 </head>
 <body>
     <h1>Upload a Combo </h1>
+
+    <form action="/combos/omar" method="post" enctype="multipart/form-data">
+        <input name="video" type="file" >
+
+        <button>Upload</button>
+    </form>
+
     <form action="/combos/new" method="post" enctype="multipart/form-data">
-        <!-- <label for=""></label> -->
-        <!--  <input type="file" name="avatar" /> -->
+        <label for="video">Choose a video: </label>
+        <input type="file" name="video" id="video">
 
 
         <label for="starter">Combo Starter: </label>
@@ -22,12 +29,12 @@
         <input type="text" name="resource" id="resource">
 
         <label for="user">User: </label>
-        <input type="user" name="user" id="user">
+        <input type="text" name="user" id="user">
 
-        <input type="file" name="video" />
+        <!-- <input type="file" name="video" /> -->
 
 
-        <button type="submit">Upload</button>
+        <button type="submit">Submit</button>
     </form>    
 
 
