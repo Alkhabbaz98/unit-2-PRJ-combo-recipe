@@ -16,7 +16,7 @@ const comboSchema = new Schema({
     },
     video:{
         type:String,
-        requried: true,
+        // requried: true,
     },
     
     // user:{

@@ -17,57 +17,69 @@ const cloudinaryUploader = require("../config/cloudinaryConfig")
 // Create: 
 router.get("/new", (req,res)=>{
     res.render("combo.ejs")
+
 })
+    
 
-// router.post("/new", upload.single('video') , async(req,res)=> {
-//      console.log(req.body)
-//     try {
-//         await Combo.create(req.body)
-//         // req.file    
-//         res.redirect("/combos")
-//     } catch(error){
-//         console.log(error)
-//     }
-
-// })
-// Mohammed and Omar Route Cloudinary
-router.post("/omar",cloudinaryUploader.single("video"),async(req,res)=>{
-    console.log(req.file)
-})
-
-
-// for video upload: 
-router.post("/new", upload.single('video'), async (req, res) => {
+router.post("/omar", cloudinaryUploader.single("video") , async(req,res)=> {
+     console.log(req.body)
+     console.log(req.file)
     try {
-        if (req.session.user) {
-        let post = req.body
-        if (req.file) {
-            const uploadResult = await cloudinary.uploader
-                .upload(
-                    `./uploads/${req.file.filename}`,
-                    {
-                        resource_type: "video", // make sure video is the correct string/ "word" to specify it is a video.
-                        public_id: req.file.originalname
-                    }
-                )
-                .catch((error) => {
-                    console.log(error);
-                });
-            await fs.rmSync(`./uploads/${req.file.filename}`, {
-                force: true,
-            });
-            post.video = uploadResult.secure_url
+
+        let comboObject = {
+            starter: req.body.starter,
+            description: req.body.description,
+            resource: req.body.resource,
+            video: req.file.path
         }
-        post.file = null
-        post.creator = req.session.user._id
-        await Post.create(post)
+        // await Combo.create(req.file.path)
+        // req.file
+        await Combo.create(comboObject)
+          
         res.redirect("/combos")
-    }
-    } catch (error){
+    } catch(error){
         console.log(error)
     }
 
 })
+// Mohammed and Omar Route Cloudinary
+// router.post("/omar",cloudinaryUploader.single("video"),async(req,res)=>{
+//     console.log(req.file)
+
+// })
+
+// for video upload: 
+// router.post("/new", upload.single('video'), async (req, res) => {
+//     try {
+//         if (req.session.user) {
+//         let post = req.body
+//         if (req.file) {
+//             const uploadResult = await cloudinary.uploader
+//                 .upload(
+//                     `./uploads/${req.file.filename}`,
+//                     {
+//                         resource_type: "video", // make sure video is the correct string/ "word" to specify it is a video.
+//                         public_id: req.file.originalname
+//                     }
+//                 )
+//                 .catch((error) => {
+//                     console.log(error);
+//                 });
+//             await fs.rmSync(`./uploads/${req.file.filename}`, {
+//                 force: true,
+//             });
+//             post.video = uploadResult.secure_url
+//         }
+//         post.file = null
+//         post.creator = req.session.user._id
+//         await Post.create(post)
+//         res.redirect("/combos")
+//     }
+//     } catch (error){
+//         console.log(error)
+//     }
+
+// })
 
 
 

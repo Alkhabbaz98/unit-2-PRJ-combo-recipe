@@ -13,7 +13,7 @@ const storage = new CloudinaryStorage({
   params: {
     allowed_formats: ['mp4','jpeg','jpg','png'],
     folder: 'game-combos', // The name of the folder in cloudinary
-    // resource_type: 'raw'
+    resource_type: 'video'
   }
 });
 //                     storage: storage

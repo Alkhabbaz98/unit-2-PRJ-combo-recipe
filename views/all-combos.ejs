@@ -12,7 +12,9 @@
         <p>Combo Starter: <%= oneCombo.starter %></p>
         <p>Combo Description: <%= oneCombo.description %></p>
         <p>Combo Resources: <%= oneCombo.resource %></p>
-        <p>Combo Demenstration(Video): <%= oneCombo.video %></p>
+        <iframe 
+            src= "<%= oneCombo.video %>">
+        </iframe>
         
         <form method="post" action="/combos/<%= oneCombo._id %>?_method=DELETE">
         <br>
