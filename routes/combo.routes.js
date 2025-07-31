@@ -30,7 +30,7 @@ router.get("/new", (req,res)=>{
 //     }
 
 // })
-// Mohammad and Omar Route Cloudinary
+// Mohammed and Omar Route Cloudinary
 router.post("/omar",cloudinaryUploader.single("video"),async(req,res)=>{
     console.log(req.file)
 })
