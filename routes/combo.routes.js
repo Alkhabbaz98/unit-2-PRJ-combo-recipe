@@ -13,15 +13,23 @@ cloudinary.config({
 const cloudinaryUploader = require("../config/cloudinaryConfig")
 
 
+// Home Page: 
+router.get("/home", (req,res)=> {
+    res.render("home.ejs")
+})
+
+// character select page:
+router.get("/character-select", (req,res)=>{
+    res.render("character-select.ejs")
+})
 
 // Create: 
-router.get("/new", (req,res)=>{
+router.get("/upload", (req,res)=>{
     res.render("combo.ejs")
-
 })
     
 
-router.post("/omar", cloudinaryUploader.single("video") , async(req,res)=> {
+router.post("/upload", cloudinaryUploader.single("video") , async(req,res)=> {
      console.log(req.body)
      console.log(req.file)
     try {
@@ -150,6 +158,8 @@ router.put("/:comboId", async (req, res)=>{
         console.log(error)
     }
 })
+
+
 
 
 
