@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Combos</title>
+</head>
+<body>
+    <h1>Ken Combos</h1>
+    <% kenCombos.forEach((oneCombo)=> {%>
+        
+        <p>Combo Starter: <%= oneCombo.starter %></p>
+        <p>Combo Description: <%= oneCombo.description %></p>
+        <p>Combo Resources: <%= oneCombo.resource %></p>
+        <iframe 
+            src= "<%= oneCombo.video %>">
+        </iframe>
+        
+        <form method="post" action="/combos/<%= oneCombo._id %>?_method=DELETE">
+        <br>
+            <button type="submit">Delete Combo</button>
+        </form>
+        <br>
+        <a href="/combos/<%= oneCombo._id %>/update">
+        <button type="submit"> Update Combo</button>
+        </a>
+        <br>
+        <br>
+        <a href="/combos/<%= oneCombo._id %>"> Combo Details</a>
+        <hr>
+    <% })  %>
+</body>
+</html>

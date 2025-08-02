@@ -44,7 +44,7 @@ router.post("/upload", cloudinaryUploader.single("video") , async(req,res)=> {
         // req.file
         await Combo.create(comboObject)
           
-        res.redirect("/combos")
+        res.redirect("/combos/ken")
     } catch(error){
         console.log(error)
     }
@@ -97,15 +97,29 @@ router.post("/upload", cloudinaryUploader.single("video") , async(req,res)=> {
 
 
 // Show all list and in the list there should be a delete button:
-router.get("/", async (req,res) => {
+// Ken Combos
+router.get("/ken", async (req,res) => {
     try{
-        const allCombos = await Combo.find()
-        res.render("all-combos.ejs", {allCombos: allCombos})
+        const kenCombos = await Combo.find()
+        res.render("ken-combos.ejs", {kenCombos: kenCombos})
     }
     catch(error){
         console.log(error)
     }
 })
+
+// Akuma combos
+router.get("/akuma", async (req,res) => {
+    try{
+        const akumaCombos = await Combo.find()
+        res.render("akuma-combos.ejs", {akumaCombos: akumaCombos})
+    }
+    catch (error){
+        console.log(error)
+    }
+})
+
+
 
 router.get("/:comboId", async (req,res)=>{
     try{
