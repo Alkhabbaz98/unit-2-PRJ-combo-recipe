@@ -12,10 +12,17 @@
         <p>Combo Starter: <%= oneCombo.starter %></p>
         <p>Combo Description: <%= oneCombo.description %></p>
         <p>Combo Resources: <%= oneCombo.resource %></p>
+        
         <iframe 
             src= "<%= oneCombo.video %>">
         </iframe>
-        
+
+        <p>Or Post a Video Link: </p>
+        <a href="<%= oneCombo.link %>">
+            <img src="https://www.freeiconspng.com/thumbs/youtube-logo-png/youtube-logo-png-photo-0.png" alt="video logo">
+        </a>
+
+
         <form method="post" action="/combos/<%= oneCombo._id %>?_method=DELETE">
         <br>
             <button type="submit">Delete Combo</button>
@@ -27,6 +34,8 @@
         <br>
         <br>
         <a href="/combos/<%= oneCombo._id %>"> Combo Details</a>
+        
+        
         <hr>
     <% })  %>
 </body>

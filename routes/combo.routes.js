@@ -38,13 +38,14 @@ router.post("/upload", cloudinaryUploader.single("video") , async(req,res)=> {
             starter: req.body.starter,
             description: req.body.description,
             resource: req.body.resource,
-            video: req.file.path
+            video: req.file.path,
+            link:  req.body.link
         }
         // await Combo.create(req.file.path)
         // req.file
         await Combo.create(comboObject)
           
-        res.redirect("/combos/ken")
+        res.redirect("/combos/akuma")
     } catch(error){
         console.log(error)
     }
@@ -141,7 +142,7 @@ router.delete("/:comboId" , async (req,res)=>{
     try{
         const delectedCombo = await Combo.findByIdAndDelete(req.params.comboId)
         console.log(req.params.comboId)
-        res.redirect("/combos")
+        res.redirect("/combos/akuma")
     }
     catch(error){
         console.log(error)
@@ -166,7 +167,7 @@ router.put("/:comboId", async (req, res)=>{
     const updatedCombo = await Combo.findByIdAndUpdate(req.params.comboId, req.body)
     console.log(req.body)
     console.log(updatedCombo)
-    res.redirect("/combos")
+    res.redirect("/combos/ken")
     }
     catch (error){
         console.log(error)

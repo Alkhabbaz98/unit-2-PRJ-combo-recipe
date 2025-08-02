@@ -18,7 +18,9 @@ const comboSchema = new Schema({
         type:String,
         // requried: true,
     },
-    
+    link:{
+        type:String,
+    },
     // user:{
     //     type: Schema.Types.ObjectId,
     //     ref: "User"
