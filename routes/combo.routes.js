@@ -142,6 +142,12 @@ router.get("/ken", async (req,res) => {
         const kenCombos = await Combo.find({
             character: "ken"
         })    
+        kenCombos.forEach(element => {
+            const splitYoutube = element.video.split("/watch?v=")
+            if (splitYoutube[0] === 'https://www.youtube.com'){
+            element.video=`${splitYoutube[0]}/embed/${splitYoutube[1]}`
+            }
+        }); 
         res.render("ken-all-combos.ejs", {kenCombos: kenCombos})
     }
     catch(error){
@@ -173,7 +179,7 @@ router.get("/:comboId", async (req,res)=>{
         
         const splitYoutube = oneComboDetail.video.split("/watch?v=")
         console.log(splitYoutube)
-        if (splitYoutube[0] === 'https://www.youtube.com'){
+        if (splitYoutube[0] === 'https://www.youtube.com' || splitYoutube[0] === "https://youtu.be"){
         console.log(splitYoutube)
         oneComboDetail.video=`${splitYoutube[0]}/embed/${splitYoutube[1]}`
         res.render("oneCombo.ejs", {oneComboDetail})
@@ -239,10 +245,17 @@ router.get("/ken/:comboId/update", async (req,res)=> {
     }
 })
 
-router.put("/ken/:comboId", async (req, res)=>{
+router.put("/ken/:comboId",cloudinaryUploader.single("video") , async (req, res)=>{
     try{
-         console.log(req.params.comboId);
-    const updatedCombo = await Combo.findByIdAndUpdate(req.params.comboId, req.body)
+    let comboObject = {
+            character: req.body.character,
+            starter: req.body.starter,
+            description: req.body.description,
+            resource: req.body.resource,
+            video: req.file?.path || req.body?.link,
+        }
+    console.log(req.params.comboId);
+    const updatedCombo = await Combo.findByIdAndUpdate(req.params.comboId, comboObject)
     console.log(req.body)
     console.log(updatedCombo)
     res.redirect("/combos/ken")
@@ -258,4 +271,6 @@ router.put("/ken/:comboId", async (req, res)=>{
 
 
 module.exports = router
+
+
 
