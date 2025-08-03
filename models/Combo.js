@@ -1,6 +1,10 @@
 const {model, Schema} = require("mongoose")
 
 const comboSchema = new Schema({
+    character: {
+        type:String,
+        required: true,
+    },
     starter:{
         type:String,
         required: true,

@@ -23,13 +23,13 @@ router.get("/character-select", (req,res)=>{
     res.render("character-select.ejs")
 })
 
-// Create: 
-router.get("/upload", (req,res)=>{
-    res.render("combo.ejs")
+// Create for Akuma: 
+router.get("/uploadAkuma", (req,res)=>{
+    res.render("comboAkuma.ejs")
 })
     
-
-router.post("/upload", cloudinaryUploader.single("video") , async(req,res)=> {
+// Upload for Akuma 
+router.post("/uploadAkuma", cloudinaryUploader.single("video") , async(req,res)=> {
      console.log(req.body)
      console.log(req.file)
     try {
@@ -51,6 +51,43 @@ router.post("/upload", cloudinaryUploader.single("video") , async(req,res)=> {
     }
 
 })
+
+
+
+
+
+// Create For Ken
+router.get("/uploadKen", (req,res)=>{
+    res.render("comboKen.ejs")
+})
+// Upload for Ken
+router.post("/uploadKen", cloudinaryUploader.single("video") , async(req,res)=> {
+     console.log(req.body)
+     console.log(req.file)
+    try {
+
+        let comboObject = {
+            starter: req.body.starter,
+            description: req.body.description,
+            resource: req.body.resource,
+            video: req.file.path,
+            link:  req.body.link
+        }
+        // await Combo.create(req.file.path)
+        // req.file
+        await Combo.create(comboObject)
+          
+        res.redirect("/combos/ken")
+    } catch(error){
+        console.log(error)
+    }
+
+})
+
+
+
+
+
 // Mohammed and Omar Route Cloudinary
 // router.post("/omar",cloudinaryUploader.single("video"),async(req,res)=>{
 //     console.log(req.file)
