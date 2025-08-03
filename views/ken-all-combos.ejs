@@ -8,19 +8,20 @@
 <body>
     <h1>Ken Combos</h1>
     <% kenCombos.forEach((oneCombo)=> {%>
-        
-        <p>Combo Starter: <%= oneCombo.starter %></p>
-        <p>Combo Description: <%= oneCombo.description %></p>
-        <p>Combo Resources: <%= oneCombo.resource %></p>
-        
-        <p>Or Post a Video Link: </p>
-        <a href="<%= oneCombo.link %>" target="_blank">
-            <img src="https://www.freeiconspng.com/thumbs/youtube-logo-png/youtube-logo-png-photo-0.png" alt="video logo">
-        </a>
-        
-        <iframe 
-            src= "<%= oneCombo.video %>">
-        </iframe>
+        <% if(oneCombo.character === "ken") {%>
+            <p>Character: <%= oneCombo.character %></p>
+            <p>Combo Starter: <%= oneCombo.starter %></p>
+            <p>Combo Description: <%= oneCombo.description %></p>
+            <p>Combo Resources: <%= oneCombo.resource %></p>
+            <iframe 
+                src= "<%= oneCombo.video %>">
+            </iframe>
+    
+            <p>Or Post a Video Link: </p>
+            <a href="<%= oneCombo.link %>" target="_blank">
+                <img src="https://www.freeiconspng.com/thumbs/youtube-logo-png/youtube-logo-png-photo-0.png" alt="video logo">
+            </a>
+            <% } %>
         
         <form method="post" action="/combos/<%= oneCombo._id %>?_method=DELETE">
         <br>

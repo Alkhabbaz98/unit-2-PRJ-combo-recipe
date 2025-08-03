@@ -25,7 +25,7 @@ router.get("/character-select", (req,res)=>{
 
 // Create for Akuma: 
 router.get("/uploadAkuma", (req,res)=>{
-    res.render("comboAkuma.ejs")
+    res.render("upload-akuma.ejs")
 })
     
 // Upload for Akuma 
@@ -35,6 +35,7 @@ router.post("/uploadAkuma", cloudinaryUploader.single("video") , async(req,res)=
     try {
 
         let comboObject = {
+            character: req.body.character,
             starter: req.body.starter,
             description: req.body.description,
             resource: req.body.resource,
@@ -58,7 +59,7 @@ router.post("/uploadAkuma", cloudinaryUploader.single("video") , async(req,res)=
 
 // Create For Ken
 router.get("/uploadKen", (req,res)=>{
-    res.render("comboKen.ejs")
+    res.render("upload-ken.ejs")
 })
 // Upload for Ken
 router.post("/uploadKen", cloudinaryUploader.single("video") , async(req,res)=> {
@@ -67,6 +68,7 @@ router.post("/uploadKen", cloudinaryUploader.single("video") , async(req,res)=> 
     try {
 
         let comboObject = {
+            character: req.body.character,
             starter: req.body.starter,
             description: req.body.description,
             resource: req.body.resource,
@@ -139,7 +141,8 @@ router.post("/uploadKen", cloudinaryUploader.single("video") , async(req,res)=> 
 router.get("/ken", async (req,res) => {
     try{
         const kenCombos = await Combo.find()
-        res.render("ken-combos.ejs", {kenCombos: kenCombos})
+        console.log(kenCombos)
+        res.render("ken-all-combos.ejs", {kenCombos: kenCombos})
     }
     catch(error){
         console.log(error)
@@ -150,7 +153,7 @@ router.get("/ken", async (req,res) => {
 router.get("/akuma", async (req,res) => {
     try{
         const akumaCombos = await Combo.find()
-        res.render("akuma-combos.ejs", {akumaCombos: akumaCombos})
+        res.render("akuma-all-combos.ejs", {akumaCombos: akumaCombos})
     }
     catch (error){
         console.log(error)
