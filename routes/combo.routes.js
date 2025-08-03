@@ -39,7 +39,7 @@ router.post("/uploadAkuma", cloudinaryUploader.single("video") , async(req,res)=
             starter: req.body.starter,
             description: req.body.description,
             resource: req.body.resource,
-            video: req.file?.path || req.body.link,
+            video: req.file?.path || req.body?.link,
              
         }
         // await Combo.create(req.file.path)
@@ -72,7 +72,7 @@ router.post("/uploadKen", cloudinaryUploader.single("video") , async(req,res)=> 
             starter: req.body.starter,
             description: req.body.description,
             resource: req.body.resource,
-            video: req.file?.path || req.body.link,
+            video: req.file?.path || req.body?.link,
         }
         // await Combo.create(req.file.path)
         // req.file
@@ -139,8 +139,9 @@ router.post("/uploadKen", cloudinaryUploader.single("video") , async(req,res)=> 
 // Ken Combos
 router.get("/ken", async (req,res) => {
     try{
-        const kenCombos = await Combo.find()
-
+        const kenCombos = await Combo.find({
+            character: "ken"
+        })    
         res.render("ken-all-combos.ejs", {kenCombos: kenCombos})
     }
     catch(error){
@@ -151,7 +152,9 @@ router.get("/ken", async (req,res) => {
 // Akuma combos
 router.get("/akuma", async (req,res) => {
     try{
-        const akumaCombos = await Combo.find()
+        const akumaCombos = await Combo.find({
+            character: "akuma"
+        })
         res.render("akuma-all-combos.ejs", {akumaCombos: akumaCombos})
     }
     catch (error){
@@ -169,11 +172,11 @@ router.get("/:comboId", async (req,res)=>{
         // in the ejs if the isYoutubeVideo is true
         
         const splitYoutube = oneComboDetail.video.split("/watch?v=")
-        console.log(splitYoutube[0])
+        console.log(splitYoutube)
         if (splitYoutube[0] === 'https://www.youtube.com'){
         console.log(splitYoutube)
         oneComboDetail.video=`${splitYoutube[0]}/embed/${splitYoutube[1]}`
-        res.render("oneCombo.ejs", {oneComboDetail, })
+        res.render("oneCombo.ejs", {oneComboDetail})
     }
     }
     catch(error){
@@ -191,7 +194,7 @@ router.delete("/:comboId" , async (req,res)=>{
     try{
         const delectedCombo = await Combo.findByIdAndDelete(req.params.comboId)
         console.log(req.params.comboId)
-        res.redirect("/combos/akuma")
+        res.redirect("/combos/ken")
     }
     catch(error){
         console.log(error)
@@ -200,19 +203,45 @@ router.delete("/:comboId" , async (req,res)=>{
 
 
 
-// update: 
-router.get("/:comboId/update", async (req,res)=> {
+// akuma update: 
+router.get("/akuma/:comboId/update", async (req,res)=> {
     try{
         const foundCombo = await Combo.findById(req.params.comboId)
-        res.render("combo-update.ejs", {foundCombo})
+        res.render("akuma-update.ejs", {foundCombo})
     }
     catch(error){
         console.log(error)
     }
 })
 
-router.put("/:comboId", async (req, res)=>{
+router.put("/akuma/:comboId", async (req, res)=>{
     try{
+        console.log(req.params.comboId);
+    const updatedCombo = await Combo.findByIdAndUpdate(req.params.comboId, req.body)
+    console.log(req.body)
+    console.log(updatedCombo)
+    res.redirect("/combos/akuma")
+    }
+    catch (error){
+        console.log(error)
+    }
+})
+
+
+// ken update
+router.get("/ken/:comboId/update", async (req,res)=> {
+    try{
+        const foundCombo = await Combo.findById(req.params.comboId)
+        res.render("ken-update.ejs", {foundCombo})
+    }
+    catch(error){
+        console.log(error)
+    }
+})
+
+router.put("/ken/:comboId", async (req, res)=>{
+    try{
+         console.log(req.params.comboId);
     const updatedCombo = await Combo.findByIdAndUpdate(req.params.comboId, req.body)
     console.log(req.body)
     console.log(updatedCombo)
@@ -222,8 +251,6 @@ router.put("/:comboId", async (req, res)=>{
         console.log(error)
     }
 })
-
-
 
 
 

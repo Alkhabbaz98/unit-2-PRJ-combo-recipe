@@ -6,8 +6,12 @@
     <title>Update Combo</title>
 </head>
 <body>
-        <h1>Edit you Combo </h1>
-    <form action="/combos/<%= foundCombo._id %>?_method=PUT" method="post" enctype="multipart/form-data">
+        <h1>Edit Ken your Combo </h1>
+    <form action="/combos/ken/<%= foundCombo._id %>?_method=PUT" method="post" enctype="multipart/form-data">
+
+        <label for="character">Character: </label>
+        <input value="<%= foundCombo.character %>" type="text" name="character" id="character"> 
+
         <label for="file"> Choose a video: </label>
         <input type="file" name="file" id="file">
 <!--  -->
@@ -23,10 +27,6 @@
 
         <label for="user">User: </label>
         <input value="<%= foundCombo.user %>" type="text" name="user" id="user">
-        
-        <!-- <label for="video">Video: </label>
-        <input value="<%= foundCombo.video %>" type="file" name="video" />
- -->
 
         <button type="submit">submit</button>
     </form>    
