@@ -7,8 +7,9 @@
 </head>
 <body>
     <h1>Akuma Combos</h1>
+    <a href="/combo"></a>
     <% akumaCombos.forEach((oneCombo)=> {%>
-        <% if(oneCombo.character === "akuma") {%>
+        <% if(oneCombo.character === "akuma" && oneCombo.video) {%>
             <p>Character: <%= oneCombo.character %></p>
             <p>Combo Starter: <%= oneCombo.starter %></p>
             <p>Combo Description: <%= oneCombo.description %></p>
@@ -19,10 +20,12 @@
     
             <p>Or Post a Video Link: </p>
             <a href="<%= oneCombo.link %>" target="_blank">
-                <img src="https://www.freeiconspng.com/thumbs/youtube-logo-png/youtube-logo-png-photo-0.png" alt="video logo">
+                <img src="https://www.freeiconspng.com/thumbs/youtube-logo-png/youtube-logo-png-photo-0.png"  alt="video logo">
             </a>
-            <% } %>
 
+        
+        <% } %>
+            
         <form method="post" action="/combos/<%= oneCombo._id %>?_method=DELETE">
         <br>
             <button type="submit">Delete Combo</button>

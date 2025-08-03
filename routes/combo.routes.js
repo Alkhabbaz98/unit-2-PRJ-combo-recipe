@@ -39,8 +39,8 @@ router.post("/uploadAkuma", cloudinaryUploader.single("video") , async(req,res)=
             starter: req.body.starter,
             description: req.body.description,
             resource: req.body.resource,
-            video: req.file.path,
-            link:  req.body.link
+            video: req.file?.path || req.body.link,
+             
         }
         // await Combo.create(req.file.path)
         // req.file
@@ -72,8 +72,7 @@ router.post("/uploadKen", cloudinaryUploader.single("video") , async(req,res)=> 
             starter: req.body.starter,
             description: req.body.description,
             resource: req.body.resource,
-            video: req.file.path,
-            link:  req.body.link
+            video: req.file?.path || req.body.link,
         }
         // await Combo.create(req.file.path)
         // req.file
@@ -141,7 +140,7 @@ router.post("/uploadKen", cloudinaryUploader.single("video") , async(req,res)=> 
 router.get("/ken", async (req,res) => {
     try{
         const kenCombos = await Combo.find()
-        console.log(kenCombos)
+
         res.render("ken-all-combos.ejs", {kenCombos: kenCombos})
     }
     catch(error){
@@ -165,7 +164,17 @@ router.get("/akuma", async (req,res) => {
 router.get("/:comboId", async (req,res)=>{
     try{
         const oneComboDetail = await Combo.findById(req.params.comboId)
-        res.render("oneCombo.ejs", {oneComboDetail})
+        // Check if the video is a youtube video or not
+        // if its a youtube video pass a isYoutubeVideo boolean to the view
+        // in the ejs if the isYoutubeVideo is true
+        
+        const splitYoutube = oneComboDetail.video.split("/watch?v=")
+        console.log(splitYoutube[0])
+        if (splitYoutube[0] === 'https://www.youtube.com'){
+        console.log(splitYoutube)
+        oneComboDetail.video=`${splitYoutube[0]}/embed/${splitYoutube[1]}`
+        res.render("oneCombo.ejs", {oneComboDetail, })
+    }
     }
     catch(error){
         console.log(error)
