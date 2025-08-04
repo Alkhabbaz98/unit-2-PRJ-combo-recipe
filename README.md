@@ -1,7 +1,6 @@
 <a href="https://unit-2-prj-combo-recipe.onrender.com">
-    <img src="https://wiki.supercombo.gg/images/thumb/b/be/SF6_Akuma_Portrait.png/738px-SF6_Akuma_Portrait.png?20240429100351" alt="RyuVSLuke">
+    <img src="https://preview.redd.it/8e7d7zmzlimc1.jpg?width=3840&format=pjpg&auto=webp&s=12b20727724c85a4f84ce80da44b5c6fbb2d7117" alt="RyuVSLuke">
     </a>
-
 <h1>DESCRIPTION</h1> 
 <hr>
 <p>Combo Recipe is a simple website where the user can visit and refere to it as it's liberary for combos. The website is designed to allow the fighting game community (FGC)
