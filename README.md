@@ -1,9 +1,10 @@
+<img width="250" height="222" alt="sf6-RyuVSLuke" src="https://preview.redd.it/8e7d7zmzlimc1.jpg?width=3840&format=pjpg&auto=webp&s=12b20727724c85a4f84ce80da44b5c6fbb2d7117">
 <h1>DESCRIPTION</h1> 
 <hr>
 <p>Combo Recipe is a simple website where the user can visit and refere to it as it's liberary for combos. The website is designed to allow the fighting game community (FGC)
  to check for combos for their favourite game and character, and also upload combo videos by themselves. 
 This first one that makes a straight line is the winner. </p>
-<img width="250" height="222" alt="sf6-RyuVSLuke" src="https://preview.redd.it/8e7d7zmzlimc1.jpg?width=3840&format=pjpg&auto=webp&s=12b20727724c85a4f84ce80da44b5c6fbb2d7117">
+
 <hr>
 <h1>Attributions</h1>
 <hr>
