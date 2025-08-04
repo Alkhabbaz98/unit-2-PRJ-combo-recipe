@@ -1,3 +1,5 @@
+
+<link rel="stylesheet" href="../style/sign&login">
 <nav>
     <% if (user){ %>
     <a href="/auth/logout">Logout</a>
@@ -5,8 +7,8 @@
 
 
     <%} else{ %>
-    <a href="/auth/login">Login</a>
-    <a href="/auth/sign-up">Sign Up</a>
+    <a href="/auth/login" class="sign&login">Login</a>
+    <a href="/auth/sign-up" class="sign&login">Sign Up</a>
     <%} %>
     
 </nav>
