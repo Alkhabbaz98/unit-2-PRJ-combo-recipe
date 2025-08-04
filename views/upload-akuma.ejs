@@ -3,32 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/upload.css">
     <title>Combo </title>
 </head>
 <body>
     <h1>Upload your Akuma Combo </h1>
 
     <form action="/combos/uploadAkuma" method="post" enctype="multipart/form-data">
+       
         <input name="video" type="file" >
-
+        <br>
         <label for="character">Character: </label>
         <input type="text" name="character" id="character">
-
+        <br>
         <label for="starter">Combo Starter: </label>
         <input type="text" name="starter" id="starter">
-
+        <br>
         <label for="description">Combo Description: </label>
         <input name="description" id="description" type="text">
-
+        <br>
         <label for="resource">Resource: </label>
         <input type="text" name="resource" id="resource">
-
+        <br>
         <label for="link">Or Post a Video Link: </label>
         <input type="text" name="link" id="link">
-
+        <br>
         <label for="user">User: </label>
         <input type="text" name="user" id="user">
-       
+        <br>
         <button>Upload</button>
     </form>
 

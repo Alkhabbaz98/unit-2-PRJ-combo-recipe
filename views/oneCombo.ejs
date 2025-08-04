@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Combo Details</title>
+    <link rel="stylesheet" href="../style/oneCombo.css">
 </head>
 <body>
+    <div class="content">
+    <div class="slot">
     <p>Combo Starter: <%= oneComboDetail.starter %></p>
     <p>Combo Description: <%= oneComboDetail.description %></p>
     <p>Combo resource: <%= oneComboDetail.resource %></p>
     <p>Or Post a Video Link: <%= oneComboDetail.link %></p>
     <iframe src= "<%= oneComboDetail.video %>"></iframe>
-    
+    </div>
+</div>
 </body>
 </html>
 

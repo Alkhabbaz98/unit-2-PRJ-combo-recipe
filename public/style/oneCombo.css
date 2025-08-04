@@ -1,0 +1,34 @@
+body {
+    text-align: center;
+    background-color: gainsboro;
+    background-image: url("https://preview.redd.it/8e7d7zmzlimc1.jpg?width=3840&format=pjpg&auto=webp&s=12b20727724c85a4f84ce80da44b5c6fbb2d7117");
+    background-size: 100%;
+}
+h1 {
+    background-color: rgb(255, 0, 0, 0.3);
+    color: aliceblue;
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.slot {
+    
+    background-color: gainsboro;
+    display: block;
+    margin-top: 10%;
+    padding: 10px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    width: 50%;
+    text-align: start;
+    border: 1px solid black ;
+}
+
+p {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+

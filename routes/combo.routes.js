@@ -220,10 +220,17 @@ router.get("/akuma/:comboId/update", async (req,res)=> {
     }
 })
 
-router.put("/akuma/:comboId", async (req, res)=>{
+router.put("/akuma/:comboId",cloudinaryUploader.single("video") , async (req, res)=>{
     try{
-        console.log(req.params.comboId);
-    const updatedCombo = await Combo.findByIdAndUpdate(req.params.comboId, req.body)
+    let comboObject = {
+            character: req.body.character,
+            starter: req.body.starter,
+            description: req.body.description,
+            resource: req.body.resource,
+            video: req.file?.path || req.body?.link,
+        }
+    console.log(req.params.comboId);
+    const updatedCombo = await Combo.findByIdAndUpdate(req.params.comboId, comboObject)
     console.log(req.body)
     console.log(updatedCombo)
     res.redirect("/combos/akuma")
