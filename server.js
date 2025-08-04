@@ -12,7 +12,6 @@ const isSignedIn = require("./middleware/isSignedIn")
 const comboRoutes = require("./routes/combo.routes")
 
 
-// Middleware
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false })); 
 app.use(methodOverride("_method")); 
