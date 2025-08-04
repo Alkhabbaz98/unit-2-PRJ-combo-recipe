@@ -8,7 +8,15 @@
 </head>
 <body>
     <h1>Akuma Combos</h1>
-    <a href="/combo"></a>
+    <div class="links">
+    <ul>
+    <a href="/combos/character-select"> <li>Character Select </li></a>
+    <a href="/combos/home"><li>Home </li></a>
+    <a href="/combos/uploadKen"><li>Upload Combo</li></a>
+    </ul>
+    </div>
+    <br>
+    <br>
 <div class="content">
     <% akumaCombos.forEach((oneCombo)=> {%>
         <div class="slot">
@@ -17,14 +25,11 @@
             <p class="item">Combo Starter: <%= oneCombo.starter %></p>
             <p class="item">Combo Description: <%= oneCombo.description %></p>
             <p class="item">Combo Resources: <%= oneCombo.resource %></p>
+            <p class="item">User: <%= oneCombo.user?.username %></p>
             <iframe 
                 src= "<%= oneCombo.video %>">
             </iframe>
     
-            <p class="item">Or Post a Video Link: </p>
-            <a href="<%= oneCombo.link %>" target="_blank">
-                <img src="https://www.freeiconspng.com/thumbs/youtube-logo-png/youtube-logo-png-photo-0.png"  alt="video logo">
-            </a>
 
         
         <% } %>

@@ -72,6 +72,7 @@ router.post("/uploadKen", cloudinaryUploader.single("video") , async(req,res)=> 
             starter: req.body.starter,
             description: req.body.description,
             resource: req.body.resource,
+            user: req.body.user,
             video: req.file?.path || req.body?.link,
         }
         // await Combo.create(req.file.path)
@@ -141,7 +142,8 @@ router.get("/ken", async (req,res) => {
     try{
         const kenCombos = await Combo.find({
             character: "ken"
-        })    
+        }).populate('user')   
+        console.log(kenCombos) 
         kenCombos.forEach(element => {
             const splitYoutube = element.video.split("/watch?v=")
             if (splitYoutube[0] === 'https://www.youtube.com'){
