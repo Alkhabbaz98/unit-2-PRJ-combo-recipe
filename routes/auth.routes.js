@@ -11,20 +11,12 @@ router.post("/sign-up", async (req, res) => {
     try {
         const { username, password } = req.body;
 
-        // VALIDATION
-        //  Check if all the necessary fields are there
+
         if (!username || !password) {
             return res.render("auth/sign-up", {
                 error: "All fields are required."
             });
         }
-
-        // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        // if (!emailRegex.test(email)) {
-        //     return res.render("auth/sign-up", {
-        //         error: "Please enter a valid email address."
-        //     });
-        // }
 
         if (password.length < 6) {
             return res.render("auth/sign-up", {
@@ -32,7 +24,7 @@ router.post("/sign-up", async (req, res) => {
             });
         }
 
-        // Do we already have this person in our database?
+    
         const existingUser = await User.findOne({ username });
         if (existingUser) {
             return res.render("auth/sign-up", {
@@ -42,7 +34,7 @@ router.post("/sign-up", async (req, res) => {
         }
 
 
-        // Hash password and create user
+
         const hashedPassword = bcrypt.hashSync(password, 10);
         const newUser = {
             username,
@@ -51,7 +43,7 @@ router.post("/sign-up", async (req, res) => {
 
         await User.create(newUser);
 
-        // Redirect to Login
+
         res.redirect("/auth/login");
 
     } catch (error) {

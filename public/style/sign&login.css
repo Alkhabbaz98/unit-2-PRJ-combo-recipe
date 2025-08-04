@@ -37,7 +37,46 @@ button:hover {
 }
 
 nav {
-    font-size: medium;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: white;
+    font-size: larger;
+    
 }
 
 
+#login {
+    color: white; 
+    width: 15%;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.4);;
+    padding: 3px;
+  
+     
+}
+
+#signup {
+    color: white;
+    
+    font-size: larger;
+    width: 15%;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.4);;
+    padding: 3px;
+
+   
+}
+
+#signup:hover {
+  
+  background-color: rgb(255, 255, 255, 0.2);
+  
+  
+}
+
+#login:hover {
+  
+  background-color: rgb(255, 255, 255, 0.2);
+  
+}

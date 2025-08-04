@@ -8,17 +8,17 @@ const cloudinary = require("cloudinary").v2
 cloudinary.config({
     cloud_name: process.env.CLOUDNAME,
     api_key: process.env.APIKEY,
-    api_secret: process.env.APISECRET // Click 'View API Keys' above to copy your API secret
+    api_secret: process.env.APISECRET 
 });
 const cloudinaryUploader = require("../config/cloudinaryConfig")
 
 
-// Home Page: 
+
 router.get("/home", (req,res)=> {
     res.render("home.ejs")
 })
 
-// character select page:
+
 router.get("/character-select", (req,res)=>{
     res.render("character-select.ejs")
 })
@@ -39,11 +39,11 @@ router.post("/uploadAkuma", cloudinaryUploader.single("video") , async(req,res)=
             starter: req.body.starter,
             description: req.body.description,
             resource: req.body.resource,
+            user: req.body.user,
             video: req.file?.path || req.body?.link,
              
         }
-        // await Combo.create(req.file.path)
-        // req.file
+
         await Combo.create(comboObject)
           
         res.redirect("/combos/akuma")

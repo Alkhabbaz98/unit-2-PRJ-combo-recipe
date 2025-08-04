@@ -28,8 +28,7 @@
         <label for="link">Or Post a Video Link: </label>
         <input type="text" name="link" id="link">
         <br>
-        <label for="user">User: </label>
-        <input type="text" name="user" id="user">
+        <input hidden value="<%= user._id %>" type="text" name="user" id="user">
         <br>
         <button>Upload</button>
     </form>
