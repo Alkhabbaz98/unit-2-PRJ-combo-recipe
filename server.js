@@ -5,10 +5,10 @@ const dotenv = require("dotenv").config() //this allows me to use my .env values
 const morgan = require("morgan")
 const methodOverride = require("method-override")
 const conntectToDB = require('./config/db')
-const authRoutes = require("./routes/auth.routes")
+// const authRoutes = require("./routes/auth.routes")
 const session = require("express-session")
-const passUserToView = require('./middleware/passUserToView')
-const isSignedIn = require("./middleware/isSignedIn")
+// const passUserToView = require('./middleware/passUserToView')
+// const isSignedIn = require("./middleware/isSignedIn")
 const comboRoutes = require("./routes/combo.routes")
 
 
@@ -24,7 +24,7 @@ app.use(
     saveUninitialized: true,
   })
 );
-app.use(passUserToView) //used to set the res.locals.user for each ejs page
+// app.use(passUserToView) //used to set the res.locals.user for each ejs page
 app.set("view engine", "ejs") //is more specific on which view engine we are using
 
 
@@ -34,8 +34,8 @@ conntectToDB()
 
 
 
-app.use("/auth",authRoutes)
-app.use(isSignedIn) //all your protected routes go below this middleware
+// app.use("/auth",authRoutes)
+// app.use(isSignedIn) //all your protected routes go below this middleware
 app.use('/combos', comboRoutes)
 
 

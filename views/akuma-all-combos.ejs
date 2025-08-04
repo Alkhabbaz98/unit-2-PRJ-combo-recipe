@@ -9,17 +9,19 @@
 <body>
     <h1>Akuma Combos</h1>
     <a href="/combo"></a>
+<div class="content">
     <% akumaCombos.forEach((oneCombo)=> {%>
+        <div class="slot">
         <% if(oneCombo.character === "akuma" && oneCombo.video) {%>
-            <p>Character: <%= oneCombo.character %></p>
-            <p>Combo Starter: <%= oneCombo.starter %></p>
-            <p>Combo Description: <%= oneCombo.description %></p>
-            <p>Combo Resources: <%= oneCombo.resource %></p>
+            <p class="item">Character: <%= oneCombo.character %></p>
+            <p class="item">Combo Starter: <%= oneCombo.starter %></p>
+            <p class="item">Combo Description: <%= oneCombo.description %></p>
+            <p class="item">Combo Resources: <%= oneCombo.resource %></p>
             <iframe 
                 src= "<%= oneCombo.video %>">
             </iframe>
     
-            <p>Or Post a Video Link: </p>
+            <p class="item">Or Post a Video Link: </p>
             <a href="<%= oneCombo.link %>" target="_blank">
                 <img src="https://www.freeiconspng.com/thumbs/youtube-logo-png/youtube-logo-png-photo-0.png"  alt="video logo">
             </a>
@@ -41,6 +43,8 @@
         
         
         <hr>
+        </div>
     <% })  %>
+    </div>
 </body>
 </html>
