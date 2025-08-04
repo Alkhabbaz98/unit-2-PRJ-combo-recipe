@@ -160,14 +160,19 @@ router.get("/akuma", async (req,res) => {
     try{
         const akumaCombos = await Combo.find({
             character: "akuma"
-        })
+        })    
+        akumaCombos.forEach(element => {
+            const splitYoutube = element.video.split("/watch?v=")
+            if (splitYoutube[0] === 'https://www.youtube.com'){
+            element.video=`${splitYoutube[0]}/embed/${splitYoutube[1]}`
+            }
+        }); 
         res.render("akuma-all-combos.ejs", {akumaCombos: akumaCombos})
     }
-    catch (error){
+    catch(error){
         console.log(error)
     }
 })
-
 
 
 router.get("/:comboId", async (req,res)=>{
