@@ -23,12 +23,12 @@ router.get("/character-select", (req,res)=>{
     res.render("character-select.ejs")
 })
 
-// Create for Akuma: 
+
 router.get("/uploadAkuma", (req,res)=>{
     res.render("upload-akuma.ejs")
 })
     
-// Upload for Akuma 
+ 
 router.post("/uploadAkuma", cloudinaryUploader.single("video") , async(req,res)=> {
      console.log(req.body)
      console.log(req.file)
@@ -57,11 +57,11 @@ router.post("/uploadAkuma", cloudinaryUploader.single("video") , async(req,res)=
 
 
 
-// Create For Ken
+
 router.get("/uploadKen", (req,res)=>{
     res.render("upload-ken.ejs")
 })
-// Upload for Ken
+
 router.post("/uploadKen", cloudinaryUploader.single("video") , async(req,res)=> {
      console.log(req.body)
      console.log(req.file)
@@ -75,8 +75,7 @@ router.post("/uploadKen", cloudinaryUploader.single("video") , async(req,res)=> 
             user: req.body.user,
             video: req.file?.path || req.body?.link,
         }
-        // await Combo.create(req.file.path)
-        // req.file
+
         await Combo.create(comboObject)
           
         res.redirect("/combos/ken")
@@ -86,58 +85,6 @@ router.post("/uploadKen", cloudinaryUploader.single("video") , async(req,res)=> 
 
 })
 
-
-
-
-
-// Mohammed and Omar Route Cloudinary
-// router.post("/omar",cloudinaryUploader.single("video"),async(req,res)=>{
-//     console.log(req.file)
-
-// })
-
-// for video upload: 
-// router.post("/new", upload.single('video'), async (req, res) => {
-//     try {
-//         if (req.session.user) {
-//         let post = req.body
-//         if (req.file) {
-//             const uploadResult = await cloudinary.uploader
-//                 .upload(
-//                     `./uploads/${req.file.filename}`,
-//                     {
-//                         resource_type: "video", // make sure video is the correct string/ "word" to specify it is a video.
-//                         public_id: req.file.originalname
-//                     }
-//                 )
-//                 .catch((error) => {
-//                     console.log(error);
-//                 });
-//             await fs.rmSync(`./uploads/${req.file.filename}`, {
-//                 force: true,
-//             });
-//             post.video = uploadResult.secure_url
-//         }
-//         post.file = null
-//         post.creator = req.session.user._id
-//         await Post.create(post)
-//         res.redirect("/combos")
-//     }
-//     } catch (error){
-//         console.log(error)
-//     }
-
-// })
-
-
-
-
-
-
-
-
-// Show all list and in the list there should be a delete button:
-// Ken Combos
 router.get("/ken", async (req,res) => {
     try{
         const kenCombos = await Combo.find({
@@ -157,7 +104,7 @@ router.get("/ken", async (req,res) => {
     }
 })
 
-// Akuma combos
+
 router.get("/akuma", async (req,res) => {
     try{
         const akumaCombos = await Combo.find({
@@ -180,10 +127,6 @@ router.get("/akuma", async (req,res) => {
 router.get("/:comboId", async (req,res)=>{
     try{
         const oneComboDetail = await Combo.findById(req.params.comboId)
-        // Check if the video is a youtube video or not
-        // if its a youtube video pass a isYoutubeVideo boolean to the view
-        // in the ejs if the isYoutubeVideo is true
-        
         const splitYoutube = oneComboDetail.video.split("/watch?v=")
         console.log(splitYoutube)
         if (splitYoutube[0] === 'https://www.youtube.com' || splitYoutube[0] === "https://youtu.be"){
@@ -200,9 +143,6 @@ router.get("/:comboId", async (req,res)=>{
 
 
 
-
-
-// Delete: 
 router.delete("/:comboId" , async (req,res)=>{
     try{
         const delectedCombo = await Combo.findByIdAndDelete(req.params.comboId)
@@ -216,7 +156,7 @@ router.delete("/:comboId" , async (req,res)=>{
 
 
 
-// akuma update: 
+
 router.get("/akuma/:comboId/update", async (req,res)=> {
     try{
         const foundCombo = await Combo.findById(req.params.comboId)
@@ -248,7 +188,7 @@ router.put("/akuma/:comboId",cloudinaryUploader.single("video") , async (req, re
 })
 
 
-// ken update
+
 router.get("/ken/:comboId/update", async (req,res)=> {
     try{
         const foundCombo = await Combo.findById(req.params.comboId)
